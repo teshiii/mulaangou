@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ダークルーム</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    background-color: black; /* 背景色を黒に設定 */
+    display: flex;
+    justify-content: center; /* 中央揃え */
+    align-items: center; /* 垂直方向に中央揃え */
+  }
+  h1 {
+    font-size: 3em;
+    text-align: center;
+    margin-top: 20px; /* 上部の余白を設定 */
+    color: white; /* テキストの色を白に設定 */
+  }
+  .container {
+    text-align: center; /* 中央揃え */
+  }
+  .box {
+    width: 40px; /* 枠の幅を40pxに設定 */
+    height: 40px; /* 枠の高さを40pxに設定 */
+    margin: 10px; /* 枠の間の余白 */
+    border: 1px solid rgb(255, 255, 255); /* 枠線の色を白に設定 */
+    display: inline-block; /* インラインブロック要素として表示 */
+    text-align: center; /* 中央揃え */
+    line-height: 40px; /* 文字の縦方向の中央揃え */
+    color: white; /* テキストの色を白に設定 */
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>ここは、『ダークルーム』<br>電気をつけないと道はない<br>看守一同へ<br>電気をつける方法</h1>
+
+    <!-- 10個の入力可能な四角形の枠 -->
+    <div class="box" contenteditable="true"></div>
+    <div class="box" contenteditable="true"></div>
+    <div class="box" contenteditable="true">と</div>
+    <div class="box" contenteditable="true"></div>
+    <div class="box" contenteditable="true"></div>
+    <div class="box" contenteditable="true"></div>
+    <div class="box" contenteditable="true"></div>
+    <div class="box" contenteditable="true"></div>
+    <div class="box" contenteditable="true">く</div>
+    <div class="box" contenteditable="true"></div>
+  </div>
+
+  <!-- 解き終わったら押してねのリンク -->
+  <a id="link" href="index.html">解き終わったら押してね</a>
+
+  <script>
+    // ボタンのクリックイベント
+    const linkElement = document.getElementById('link');
+    linkElement.addEventListener('click', function(event) {
+      event.preventDefault();
+  
+      // 入力された文字列を取得
+      const inputBoxes = document.querySelectorAll('.box');
+      let inputString = '';
+      inputBoxes.forEach(box => {
+        inputString += box.textContent;
+      });
+  
+      // ターゲット文字列
+      const targetString = "みぎとひだり暗まく裏";
+  
+      // 入力された文字列とターゲット文字列が一致するかチェック
+      if (inputString === targetString) {
+        // 一致する場合、新しいタブでリンク先を開く
+        window.open('index.html', '_blank');
+      } else {
+        // 一致しない場合、ポップアップを表示する
+        alert('条件を満たしていません。');
+      }
+    });
+  </script>  
+</body>
+</html>
